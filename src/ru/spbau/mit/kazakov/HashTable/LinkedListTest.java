@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LinkedListTest {
     @Test
-    void testConstructor(){
+    void testConstructor() {
         LinkedList list = new LinkedList();
     }
 

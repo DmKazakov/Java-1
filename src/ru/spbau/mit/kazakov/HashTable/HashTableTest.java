@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HashTableTest {
     @Test
-    void testConstructor(){
+    void testConstructor() {
         HashTable hashtable = new HashTable();
     }
 
@@ -79,7 +79,7 @@ class HashTableTest {
         hashtable.put("some key", "some value");
         assertEquals("some value", hashtable.remove("some key"));
     }
-    
+
     @Test
     void testSizeEmpty() {
         HashTable hashtable = new HashTable();

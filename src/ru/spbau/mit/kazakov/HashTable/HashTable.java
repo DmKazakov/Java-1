@@ -30,7 +30,7 @@ public class HashTable {
      * Tests if the specified string is a key in this hashtable.
      */
     public boolean contains(String key) {
-        int hash = key.hashCode() % capacity;
+        int hash = Math.floorMod(key.hashCode(), capacity);
         return hashtable[hash].contains(key);
     }
 
@@ -38,7 +38,7 @@ public class HashTable {
      * @return the value to which the specified key is mapped, or null if this map contains no mapping for the key
      */
     public String get(String key) {
-        int hash = key.hashCode() % capacity;
+        int hash = Math.floorMod(key.hashCode(), capacity);
         return hashtable[hash].get(key);
     }
 
@@ -48,7 +48,7 @@ public class HashTable {
      * @return previous value to which the specified key was mapped, or null if this map contained no mapping for the key
      */
     public String put(String key, String value) {
-        int hash = key.hashCode() % capacity;
+        int hash = Math.floorMod(key.hashCode(), capacity);
         String return_value = hashtable[hash].put(key, value);
 
         if (return_value == null) {
@@ -66,7 +66,7 @@ public class HashTable {
      * @return removed value, or null if this map contained no mapping for the key
      */
     public String remove(String key) {
-        int hash = key.hashCode() % capacity;
+        int hash = Math.floorMod(key.hashCode(), capacity);
         String return_value = hashtable[hash].remove(key);
         if (return_value != null)
             size--;

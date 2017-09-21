@@ -1,5 +1,8 @@
 package ru.spbau.mit.kazakov.HashTable;
 
+import ru.spbau.mit.kazakov.HashTable.LinkedList;
+import ru.spbau.mit.kazakov.HashTable.Node;
+
 /**
  * HashTable
  * Key: String

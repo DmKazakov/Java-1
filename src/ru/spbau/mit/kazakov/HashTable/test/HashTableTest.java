@@ -1,6 +1,7 @@
-package ru.spbau.mit.kazakov.HashTable;
+package ru.spbau.mit.kazakov.HashTable.test;
 
 import org.junit.jupiter.api.Test;
+import ru.spbau.mit.kazakov.HashTable.HashTable;
 
 import static org.junit.jupiter.api.Assertions.*;
 

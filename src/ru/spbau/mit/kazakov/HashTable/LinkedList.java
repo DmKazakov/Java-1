@@ -3,7 +3,7 @@ package ru.spbau.mit.kazakov.HashTable;
 /**
  * Singly linked list for hashtable.
  */
-class LinkedList {
+public class LinkedList {
     Node head = new Node(null, null);
 
     /**
@@ -38,14 +38,14 @@ class LinkedList {
     /**
      * @return true if list contains node with specified key and false otherwise
      */
-    boolean contains(String key) {
+    public boolean contains(String key) {
         return find(key) != null;
     }
 
     /**
      * @return the node's value with specified key, or null there is no such node in list
      */
-    String get(String key) {
+    public String get(String key) {
         Node found_node = find(key);
 
         if (found_node != null)
@@ -59,7 +59,7 @@ class LinkedList {
      *
      * @return previous node's value or null if there was no node with specified key
      */
-    String put(String key, String value) {
+    public String put(String key, String value) {
         Node found_node = find(key);
 
         if (found_node != null) {
@@ -77,7 +77,7 @@ class LinkedList {
      *
      * @return removed node's value or null if there was no node with specified key
      */
-    String remove(String key) {
+    public String remove(String key) {
         Node current = head;
 
         while (current.next != null) {

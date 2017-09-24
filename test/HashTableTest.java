@@ -1,5 +1,3 @@
-package ru.spbau.mit.kazakov.HashTable.test;
-
 import org.junit.jupiter.api.Test;
 import ru.spbau.mit.kazakov.HashTable.HashTable;
 

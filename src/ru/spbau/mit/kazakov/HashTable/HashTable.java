@@ -1,8 +1,5 @@
 package ru.spbau.mit.kazakov.HashTable;
 
-import ru.spbau.mit.kazakov.HashTable.LinkedList;
-import ru.spbau.mit.kazakov.HashTable.Node;
-
 /**
  * HashTable
  * Key: String
@@ -18,12 +15,13 @@ public class HashTable {
      * Initialises all linked lists.
      */
     public HashTable() {
-        for (int i = 0; i < capacity; i++)
+        for (int i = 0; i < capacity; i++) {
             hashtable[i] = new LinkedList();
+        }
     }
 
     /**
-     * @return number of keys in hashtable
+     * Returns number of keys in hashtable.
      */
     public int size() {
         return size;
@@ -38,7 +36,7 @@ public class HashTable {
     }
 
     /**
-     * @return the value to which the specified key is mapped, or null if this map contains no mapping for the key
+     * Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
      */
     public String get(String key) {
         int hash = Math.floorMod(key.hashCode(), capacity);
@@ -47,41 +45,42 @@ public class HashTable {
 
     /**
      * Maps the specified key to the specified value in this hashtable.
-     *
-     * @return previous value to which the specified key was mapped, or null if this map contained no mapping for the key
+     * Returns previous value to which the specified key was mapped, or null if this map contained no mapping for the key.
      */
     public String put(String key, String value) {
         int hash = Math.floorMod(key.hashCode(), capacity);
-        String return_value = hashtable[hash].put(key, value);
+        String returnValue = hashtable[hash].put(key, value);
 
-        if (return_value == null) {
+        if (returnValue == null) {
             size++;
-            if (size == capacity)
+            if (size == capacity) {
                 rebuild();
+            }
         }
 
-        return return_value;
+        return returnValue;
     }
 
     /**
      * Removes the specified key and its corresponding value from this hashtable.
-     *
-     * @return removed value, or null if this map contained no mapping for the key
+     * Returns removed value, or null if this map contained no mapping for the key.
      */
     public String remove(String key) {
         int hash = Math.floorMod(key.hashCode(), capacity);
-        String return_value = hashtable[hash].remove(key);
-        if (return_value != null)
+        String returnValue = hashtable[hash].remove(key);
+        if (returnValue != null) {
             size--;
-        return return_value;
+        }
+        return returnValue;
     }
 
     /**
      * Clears this hashtable so that it contains no keys.
      */
     public void clear() {
-        for (int i = 0; i < capacity; i++)
+        for (int i = 0; i < capacity; i++) {
             hashtable[i] = new LinkedList();
+        }
         size = 0;
     }
 
@@ -91,17 +90,17 @@ public class HashTable {
     private void rebuild() {
         capacity *= 2;
         size = 0;
-        LinkedList[] old_hashtable = hashtable;
+        LinkedList[] oldHashtable = hashtable;
 
         hashtable = new LinkedList[capacity];
-        for (int i = 0; i < capacity; i++)
+        for (int i = 0; i < capacity; i++) {
             hashtable[i] = new LinkedList();
+        }
 
         for (int i = 0; i < capacity / 2; i++) {
-            Node current = old_hashtable[i].head.next;
-            while (current != null) {
-                put(current.key, current.value);
-                current = current.next;
+            while (!oldHashtable[i].empty()) {
+                put(oldHashtable[i].firstElementKey(), oldHashtable[i].firstElementValue());
+                oldHashtable[i].remove(oldHashtable[i].firstElementKey());
             }
         }
     }

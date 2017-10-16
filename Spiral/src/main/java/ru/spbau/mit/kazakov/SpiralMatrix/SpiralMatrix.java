@@ -1,5 +1,7 @@
 package ru.spbau.mit.kazakov.SpiralMatrix;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -8,7 +10,7 @@ import java.util.Comparator;
  * Stores transpose square matrix with odd dimensions, sorts matrix's columns by first elements, prints matrix spirally.
  */
 public class SpiralMatrix {
-    private int[][] matrix;
+    private final int[][] matrix;
 
     private enum Direction {RIGHT, UP, LEFT, DOWN}
 
@@ -17,7 +19,8 @@ public class SpiralMatrix {
      *
      * @param data initializing matrix
      */
-    public SpiralMatrix(int[][] data) {
+    public SpiralMatrix(@NotNull int[][] data) throws NotSquareMatrixException, NullRowException, EvenDimensionException {
+        checkMatrix(data);
         matrix = new int[data.length][data.length];
 
         for (int i = 0; i < data.length; i++) {
@@ -26,6 +29,30 @@ public class SpiralMatrix {
             }
         }
     }
+
+    /**
+     * @param data
+     * @throws NotSquareMatrixException
+     * @throws NullRowException
+     * @throws EvenDimensionException
+     */
+    private void checkMatrix(@NotNull int[][] data) throws NotSquareMatrixException, NullRowException, EvenDimensionException {
+        int rows = data.length;
+
+        if (rows % 2 != 1) {
+            throw new EvenDimensionException();
+        }
+
+        for (int[] col : data) {
+            if (col == null) {
+                throw new NullRowException();
+            }
+            if (col.length != rows) {
+                throw new NotSquareMatrixException();
+            }
+        }
+    }
+
 
     /**
      * Prints matrix: each element separated by space symbol, each row separated by new line symbol.

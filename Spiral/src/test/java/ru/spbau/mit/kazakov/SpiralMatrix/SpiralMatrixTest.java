@@ -23,15 +23,45 @@ public class SpiralMatrixTest {
     }
 
     @Test
-    public void testConstructor() {
+    public void testConstructor() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
         int[][] matrix = new int[][]{{3, 1, 5},
                 {54, 43, 32},
                 {21, 53, 76}};
-        SpiralMatrix spiral = new SpiralMatrix(matrix);
+        new SpiralMatrix(matrix);
+    }
+
+    @Test(expected = EvenDimensionException.class)
+    public void testThrowsEvenDimensionException() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
+        int[][] matrix = new int[][]{{3, 1},
+                {54, 43}};
+        new SpiralMatrix(matrix);
+    }
+
+    @Test(expected = NotSquareMatrixException.class)
+    public void testRaggedMatrixThrowsNotSquareMatrixException() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
+        int[][] matrix = new int[][]{{3, 1, 5},
+                {54, 43},
+                {21, 53, 76}};
+        new SpiralMatrix(matrix);
+    }
+
+    @Test(expected = NotSquareMatrixException.class)
+    public void testRectangleMatrixThrowsNotSquareMatrixException() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
+        int[][] matrix = new int[][]{{3, 1, 5},
+                {21, 53, 76}};
+        new SpiralMatrix(matrix);
+    }
+
+    @Test(expected = NullRowException.class)
+    public void testThrowsNullRowException() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
+        int[][] matrix = new int[][]{{3, 1, 5},
+                null,
+                {21, 53, 76}};
+        new SpiralMatrix(matrix);
     }
 
     @Test
-    public void testPrintMatrix3x3() {
+    public void testPrintMatrix3x3() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
         int[][] matrix = new int[][]{{3, 1, 5},
                 {54, 43, 32},
                 {21, 53, 76}};
@@ -43,7 +73,7 @@ public class SpiralMatrixTest {
     }
 
     @Test
-    public void testPrintMatrix15x5() {
+    public void testPrintMatrix5x5() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
         int[][] matrix = new int[][]{{3, 1, 5, -1, 0},
                 {54, 43, 32, 3, 2},
                 {21, 53, 76, 7, 2},
@@ -61,7 +91,7 @@ public class SpiralMatrixTest {
     }
 
     @Test
-    public void testPrintMatrix1x1() {
+    public void testPrintMatrix1x1() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
         int[][] matrix = new int[][]{{3}};
 
         SpiralMatrix spiral = new SpiralMatrix(matrix);
@@ -71,7 +101,7 @@ public class SpiralMatrixTest {
     }
 
     @Test
-    public void testSortMatrix3x3() {
+    public void testSortMatrix3x3() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
         int[][] matrix = new int[][]{{3, 1, 5},
                 {54, 43, 32},
                 {21, 53, 76}};
@@ -84,7 +114,7 @@ public class SpiralMatrixTest {
     }
 
     @Test
-    public void testPrintSortMatrix15x5() {
+    public void testPrintSortMatrix5x5() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
         int[][] matrix = new int[][]{{3, 1, 5, -1, 0},
                 {54, 43, 32, 3, 2},
                 {21, 53, 76, 7, 2},
@@ -103,7 +133,7 @@ public class SpiralMatrixTest {
     }
 
     @Test
-    public void testSortMatrix1x1() {
+    public void testSortMatrix1x1() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
         int[][] matrix = new int[][]{{3}};
 
         SpiralMatrix spiral = new SpiralMatrix(matrix);
@@ -114,7 +144,7 @@ public class SpiralMatrixTest {
     }
 
     @Test
-    public void testPrintSpiralMatrix13x3() {
+    public void testPrintSpiralMatrix3x3() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
         int[][] matrix = new int[][]{{3, 1, 5},
                 {54, 43, 32},
                 {21, 53, 76}};
@@ -126,7 +156,7 @@ public class SpiralMatrixTest {
     }
 
     @Test
-    public void testPrintSpiralMatrix15x5() {
+    public void testPrintSpiralMatrix5x5() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
         int[][] matrix = new int[][]{{3, 1, 5, 6, 7},
                 {54, 43, 32, 3, 2},
                 {21, 53, 76, 7, 2},
@@ -140,12 +170,18 @@ public class SpiralMatrixTest {
     }
 
     @Test
-    public void testPrintSpiralMatrix1x1() {
+    public void testPrintSpiralMatrix1x1() throws NotSquareMatrixException, NullRowException, EvenDimensionException {
         int[][] matrix = new int[][]{{3}};
 
         SpiralMatrix spiral = new SpiralMatrix(matrix);
         spiral.printSpiralMatrix();
 
         assertEquals("3", outContent.toString().trim());
+    }
+
+    @Test
+    public void test() {
+        int[][] matrix = new int[][]{{1, 2}, {4, 5, 6}};
+        assertEquals(3, matrix[1].length);
     }
 }

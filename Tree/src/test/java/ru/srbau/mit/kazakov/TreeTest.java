@@ -12,14 +12,14 @@ public class TreeTest {
 
     @Test
     public void testAddNotExisting() {
-        Tree tree = new Tree<Boolean>();
+        Tree<Boolean> tree = new Tree<Boolean>();
         assertTrue(tree.add(false));
         assertTrue(tree.contains(false));
     }
 
     @Test
     public void testAddExisting() {
-        Tree tree = new Tree<Integer>();
+        Tree<Integer> tree = new Tree<Integer>();
         tree.add(1);
         assertFalse(tree.add(1));
         assertTrue(tree.contains(1));
@@ -27,7 +27,7 @@ public class TreeTest {
 
     @Test
     public void testAddOneHundred() {
-        Tree tree = new Tree<Integer>();
+        Tree<Integer> tree = new Tree<Integer>();
         for (int i = 0; i < 100; i++) {
             assertTrue(tree.add(i));
         }
@@ -37,20 +37,20 @@ public class TreeTest {
 
     @Test
     public void sizeEmpty() {
-        Tree tree = new Tree<String>();
+        Tree<String> tree = new Tree<String>();
         assertEquals(0, tree.size());
     }
 
     @Test
     public void sizeOne() {
-        Tree tree = new Tree<String>();
+        Tree<String> tree = new Tree<String>();
         tree.add("abacaba");
         assertEquals(1, tree.size());
     }
 
     @Test
     public void testSizeOneHundred() {
-        Tree tree = new Tree<Integer>();
+        Tree<Integer> tree = new Tree<Integer>();
         for (int i = 0; i < 100; i++) {
             assertTrue(tree.add(i));
         }
@@ -60,20 +60,20 @@ public class TreeTest {
 
     @Test
     public void testContainsEmpty() {
-        Tree tree = new Tree<Character>();
+        Tree<Character> tree = new Tree<Character>();
         assertFalse(tree.contains('z'));
     }
 
     @Test
     public void testContainsNotExisting() {
-        Tree tree = new Tree<Character>();
+        Tree<Character> tree = new Tree<Character>();
         tree.add('a');
         assertFalse(tree.contains('z'));
     }
 
     @Test
     public void testContainsExisting() {
-        Tree tree = new Tree<Character>();
+        Tree<Character> tree = new Tree<Character>();
         tree.add('a');
         assertTrue(tree.contains('a'));
     }

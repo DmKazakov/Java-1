@@ -26,7 +26,7 @@ public class Tree<T extends Comparable<? super T>> {
          *
          * @param value to initialize with
          */
-        public Node(@NotNull T value) {
+        private Node(@NotNull T value) {
             data = value;
         }
     }

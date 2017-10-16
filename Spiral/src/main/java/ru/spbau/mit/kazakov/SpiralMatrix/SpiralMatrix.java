@@ -31,10 +31,12 @@ public class SpiralMatrix {
     }
 
     /**
-     * @param data
-     * @throws NotSquareMatrixException
-     * @throws NullRowException
-     * @throws EvenDimensionException
+     * Checks if given matrix is correct.
+     *
+     * @param data a matrix to check
+     * @throws NotSquareMatrixException if matrix isn't square
+     * @throws NullRowException if matrix contains null row
+     * @throws EvenDimensionException if matrix's dimensions is even
      */
     private void checkMatrix(@NotNull int[][] data) throws NotSquareMatrixException, NullRowException, EvenDimensionException {
         int rows = data.length;

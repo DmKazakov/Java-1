@@ -114,7 +114,7 @@ public class Collections {
      * @return result value
      */
     static public <T, U> U foldr(@NotNull final Function2<? super T, ? super U, ? extends U> function,
-                                 final U startValue, @NotNull final Collection<T> elements) {
+                                 U startValue, @NotNull final Collection<T> elements) {
         U resultValue = startValue;
 
         for (T element : Lists.reverse(new ArrayList<>(elements))) {

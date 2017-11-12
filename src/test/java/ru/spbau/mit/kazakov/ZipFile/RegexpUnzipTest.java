@@ -29,9 +29,7 @@ public class RegexpUnzipTest {
 
         Collection<File> filesInTestingFolder = FileUtils.listFiles(testingFolder, null, true);
         for (File file : filesInTestingFolder) {
-            //if(file.isFile()){
             fileNamesInTestingFolder.add(file.getName());
-            //}
         }
 
         return fileNamesInTestingFolder;

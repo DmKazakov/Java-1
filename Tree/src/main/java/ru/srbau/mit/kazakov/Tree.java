@@ -67,8 +67,9 @@ public class Tree<T extends Comparable<? super T>> {
      * @return true if there was specified value, and false otherwise
      */
     public boolean add(@NotNull T value) {
-        if (contains(value))
+        if (contains(value)) {
             return false;
+        }
         if (root == null) {
             root = new Node(value);
             size++;

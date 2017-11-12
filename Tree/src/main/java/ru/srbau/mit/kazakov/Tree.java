@@ -64,7 +64,7 @@ public class Tree<T extends Comparable<? super T>> {
      * Adds new Node storing specified value to the tree.
      *
      * @param value to add
-     * @return true if there was specified value, and false otherwise
+     * @return false if there was specified value, and true otherwise
      */
     public boolean add(@NotNull T value) {
         if (contains(value)) {

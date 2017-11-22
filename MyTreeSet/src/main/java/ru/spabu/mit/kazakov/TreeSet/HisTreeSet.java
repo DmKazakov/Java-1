@@ -1,3 +1,5 @@
+package ru.spabu.mit.kazakov.TreeSet;
+
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;

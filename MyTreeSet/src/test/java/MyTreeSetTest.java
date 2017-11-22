@@ -1,4 +1,5 @@
 import org.junit.Test;
+import ru.spabu.mit.kazakov.TreeSet.MyTreeSet;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -106,26 +107,6 @@ public class MyTreeSetTest {
         mySet.remove('t');
 
         assertArrayEquals(new Character[]{'v', 'z'}, mySet.toArray());
-    }
-
-    @Test
-    public void testRemoveRandom() {
-        MyTreeSet<Integer> mySet = new MyTreeSet<>();
-        TreeSet<Integer> random = new TreeSet<>();
-
-        for (int i = 0; i < 100; i++) {
-            Integer valueToAdd = ThreadLocalRandom.current().nextInt(0, 30);
-            random.add(valueToAdd);
-            mySet.add(valueToAdd);
-        }
-
-        for (int i = 0; i < 30; i++) {
-            Integer valueToRemove = ThreadLocalRandom.current().nextInt(0, 30);
-            random.remove(valueToRemove);
-            mySet.remove(valueToRemove);
-        }
-
-        assertArrayEquals(random.toArray(), mySet.toArray());
     }
 
     @Test

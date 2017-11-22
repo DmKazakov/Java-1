@@ -1,3 +1,5 @@
+package ru.spabu.mit.kazakov.TreeSet;
+
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -433,7 +435,7 @@ public class MyTreeSet<E> extends AbstractSet<E> implements HisTreeSet<E> {
     }
 
     /**
-     * Iterator for MyTreeSet.
+     * Iterator for ru.spabu.mit.kazakov.TreeSet.MyTreeSet.
      */
     private class MyTreeSetIterator implements Iterator<E> {
         private E next = first();

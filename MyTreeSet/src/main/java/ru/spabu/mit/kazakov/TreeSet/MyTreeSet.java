@@ -24,7 +24,7 @@ public class MyTreeSet<E> extends AbstractSet<E> implements HisTreeSet<E> {
      *
      * @param originalSet specified myTreeSet
      */
-    private MyTreeSet(MyTreeSet<E> originalSet) {
+    private MyTreeSet(@NotNull MyTreeSet<E> originalSet) {
         root = originalSet.root;
         size = originalSet.size;
         comparator = originalSet.comparator;
@@ -60,6 +60,7 @@ public class MyTreeSet<E> extends AbstractSet<E> implements HisTreeSet<E> {
      *
      * @return found value if there is such value, and null otherwise
      */
+    @Nullable
     private E normalOrderFirst() {
         Node current = root;
         if (current == null) {
@@ -78,6 +79,7 @@ public class MyTreeSet<E> extends AbstractSet<E> implements HisTreeSet<E> {
      *
      * @return found value if there is such value, and null otherwise
      */
+    @Nullable
     private E normalOrderLast() {
         Node current = root;
         if (current == null) {
@@ -299,6 +301,7 @@ public class MyTreeSet<E> extends AbstractSet<E> implements HisTreeSet<E> {
     /**
      * Returns an iterator over the values in this set in descending order.
      */
+    @NotNull
     public Iterator<E> descendingIterator() {
         return descendingSet().iterator();
     }
@@ -315,6 +318,7 @@ public class MyTreeSet<E> extends AbstractSet<E> implements HisTreeSet<E> {
      *
      * @return found value if there is such value, and null otherwise
      */
+    @Nullable
     public E first() {
         if (reverse) {
             return normalOrderLast();
@@ -328,6 +332,7 @@ public class MyTreeSet<E> extends AbstractSet<E> implements HisTreeSet<E> {
      *
      * @return found value if there is such value, and null otherwise
      */
+    @Nullable
     public E last() {
         if (reverse) {
             return normalOrderFirst();

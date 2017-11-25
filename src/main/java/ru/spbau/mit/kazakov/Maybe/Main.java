@@ -16,7 +16,7 @@ public class Main {
      *
      * @param args the first argument is input file and the second one is output file
      */
-    public static void main(@NotNull String[] args) throws IOException, getNothingException {
+    public static void main(@NotNull String[] args) throws IOException, GetNothingException {
         ArrayList<Maybe<Integer>> readData = new ArrayList<>();
         try (Scanner scanner = new Scanner(new File(args[0]))) {
             while (scanner.hasNextLine()) {

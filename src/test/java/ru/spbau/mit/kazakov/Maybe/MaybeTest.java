@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class MaybeTest {
     @Test
-    public void testJustInteger() throws getNothingException {
+    public void testJustInteger() throws GetNothingException {
         Maybe<Integer> maybeInteger = Maybe.just(5);
         int storedValue = maybeInteger.get();
         assertEquals(5, storedValue);
@@ -19,14 +19,14 @@ public class MaybeTest {
     }
 
     @Test
-    public void testGetDouble() throws getNothingException {
+    public void testGetDouble() throws GetNothingException {
         Maybe<Double> maybeDouble = Maybe.just(-7.0);
         double storedValue = maybeDouble.get();
         assertEquals(-7.0, storedValue, 0.000000001);
     }
 
-    @Test(expected = getNothingException.class)
-    public void testGetCharacterThrowsException() throws getNothingException {
+    @Test(expected = GetNothingException.class)
+    public void testGetCharacterThrowsException() throws GetNothingException {
         Maybe<Character> maybeCharacter = Maybe.nothing();
         char storedValue = maybeCharacter.get();
     }
@@ -44,7 +44,7 @@ public class MaybeTest {
     }
 
     @Test
-    public void testMapJust() throws getNothingException {
+    public void testMapJust() throws GetNothingException {
         Maybe<Integer> maybeInteger = Maybe.just(10);
         Maybe<Integer> mappedMaybeInteger = maybeInteger.map(value -> value * value);
         int mappedValue = mappedMaybeInteger.get();
@@ -52,7 +52,7 @@ public class MaybeTest {
     }
 
     @Test
-    public void testMapNothing() throws getNothingException {
+    public void testMapNothing() throws GetNothingException {
         Maybe<Integer> maybeInteger = Maybe.nothing();
         Maybe<Integer> mappedMaybeInteger = maybeInteger.map(value -> value * value);
         assertFalse(mappedMaybeInteger.isPresent());

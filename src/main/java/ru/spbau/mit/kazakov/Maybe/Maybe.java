@@ -3,12 +3,15 @@ package ru.spbau.mit.kazakov.Maybe;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 /**
  * Generic container for storing a value or nothing.
  */
 public class Maybe<T> {
+    private static final Maybe NOTHING = new Maybe<>(null);
+
     @Nullable
     private final T value;
 
@@ -17,7 +20,7 @@ public class Maybe<T> {
      *
      * @param t specified value
      */
-    private Maybe(T t) {
+    private Maybe(@Nullable T t) {
         value = t;
     }
 
@@ -29,7 +32,7 @@ public class Maybe<T> {
      */
     @NotNull
     public static <T> Maybe<T> just(T t) {
-        return new Maybe<T>(t);
+        return new Maybe<>(t);
     }
 
     /**
@@ -39,21 +42,21 @@ public class Maybe<T> {
      */
     @NotNull
     public static <T> Maybe<T> nothing() {
-        return new Maybe<T>(null);
+        return NOTHING;
     }
 
     /**
      * Returns stored value or throws exception if there is no value.
      *
      * @return stored value
-     * @throws getNothingException if there is no stored value
+     * @throws GetNothingException if there is no stored value
      */
     @NotNull
-    public T get() throws getNothingException {
+    public T get() throws GetNothingException {
         if (isPresent()) {
             return value;
         } else {
-            throw new getNothingException();
+            throw new GetNothingException();
         }
     }
 

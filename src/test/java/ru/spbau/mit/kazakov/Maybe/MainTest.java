@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Scanner;
 
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
@@ -20,7 +19,7 @@ public class MainTest {
     public TemporaryFolder testFolder = new TemporaryFolder();
 
     @Test
-    public void testMain() throws IOException, getNothingException {
+    public void testMain() throws IOException, GetNothingException {
         File input = testFolder.newFile("input.txt");
         File output = testFolder.newFile("output.txt");
 
@@ -35,7 +34,7 @@ public class MainTest {
     }
 
     @Test
-    public void testMainEmpty() throws IOException, getNothingException {
+    public void testMainEmpty() throws IOException, GetNothingException {
         File input = testFolder.newFile("input.txt");
         File output = testFolder.newFile("output.txt");
 

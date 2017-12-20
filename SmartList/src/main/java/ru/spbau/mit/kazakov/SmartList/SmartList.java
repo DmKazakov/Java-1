@@ -189,18 +189,4 @@ public class SmartList<E> extends AbstractList<E> implements List<E> {
         return returnValue;
     }
 
-    @Override
-    @NotNull
-    @SuppressWarnings("unchecked")
-    public Iterator<E> iterator() {
-        if(size == 0) {
-            return EmptyIterator.emptyIterator();
-        } else if(size == 1) {
-            return new SingletonIterator<>((E) data);
-        } else if(size <= 5){
-            return (Iterator<E>) Arrays.stream((Object[]) data).limit(size).iterator();
-        } else {
-            return (Iterator<E>) ((ArrayList<Object>) data).iterator();
-        }
-    }
 }

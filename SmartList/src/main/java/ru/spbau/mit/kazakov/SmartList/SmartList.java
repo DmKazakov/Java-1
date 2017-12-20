@@ -1,8 +1,8 @@
 package ru.spbau.mit.kazakov.SmartList;
 
 import org.apache.commons.collections4.iterators.EmptyIterator;
+import org.apache.commons.collections4.iterators.SingletonIterator;
 import org.jetbrains.annotations.NotNull;
-import org.apache.commons.collections4.*;
 
 import java.util.*;
 
@@ -194,9 +194,9 @@ public class SmartList<E> extends AbstractList<E> implements List<E> {
     @SuppressWarnings("unchecked")
     public Iterator<E> iterator() {
         if(size == 0) {
-            return EmptyIterator
+            return EmptyIterator.emptyIterator();
         } else if(size == 1) {
-            return new SingletonIterator(data);
+            return new SingletonIterator<>((E) data);
         } else if(size <= 5){
             return (Iterator<E>) Arrays.stream((Object[]) data).limit(size).iterator();
         } else {
